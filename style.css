@@ -67,3 +67,13 @@ button:active {
 .save-load button {
   margin-right: 10px;
 }
+
+.pulse {
+  animation: pulse 0.4s ease;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
