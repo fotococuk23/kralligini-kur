@@ -154,3 +154,71 @@ function attackBarbarian() {
   updateSoldiers();
   updateResources();
 }
+let currentPlayer = null;
+
+function login() {
+  const input = document.getElementById("playerName");
+  const name = input.value.trim();
+  if (!name) {
+    alert("Lütfen oyuncu adınızı girin.");
+    return;
+  }
+  currentPlayer = name;
+  loadGame();
+  document.querySelector(".player-login").style.display = "none";
+  document.body.style.opacity = "1"; // görünür yap
+}
+
+function saveGame() {
+  if (!currentPlayer) return;
+  const data = {
+    wood,
+    stone,
+    gold,
+    woodLevel,
+    stoneLevel,
+    soldiers
+  };
+  localStorage.setItem(`player:${currentPlayer}`, JSON.stringify(data));
+  alert("Oyun kaydedildi!");
+}
+
+function loadGame() {
+  if (!currentPlayer) return;
+  const saved = localStorage.getItem(`player:${currentPlayer}`);
+  if (saved) {
+    const data = JSON.parse(saved);
+    wood = data.wood;
+    stone = data.stone;
+    gold = data.gold;
+    woodLevel = data.woodLevel;
+    stoneLevel = data.stoneLevel;
+    soldiers = data.soldiers;
+    updateResources();
+    alert(`Hoş geldin ${currentPlayer}, oyunun yüklendi!`);
+  } else {
+    wood = 100;
+    stone = 100;
+    gold = 0;
+    woodLevel = 0;
+    stoneLevel = 0;
+    soldiers = 0;
+    updateResources();
+    alert(`Yeni oyuncu oluşturuldu: ${currentPlayer}`);
+  }
+}
+
+function resetGame() {
+  if (!currentPlayer) return;
+  if (confirm("Oyunu sıfırlamak istediğine emin misin?")) {
+    localStorage.removeItem(`player:${currentPlayer}`);
+    wood = 100;
+    stone = 100;
+    gold = 0;
+    woodLevel = 0;
+    stoneLevel = 0;
+    soldiers = 0;
+    updateResources();
+    alert("Oyun sıfırlandı.");
+  }
+}
