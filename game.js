@@ -10,6 +10,9 @@ function updateResources() {
   document.getElementById('wood').textContent = wood;
   document.getElementById('stone').textContent = stone;
   document.getElementById('gold').textContent = gold;
+  animateResource("wood");
+  animateResource("stone");
+  animateResource("gold");
   updateSoldiers();
   updateBuildingUI();
 }
@@ -121,4 +124,33 @@ function resetGame() {
     updateResources();
     alert("Oyun sıfırlandı.");
   }
+}
+function animateResource(id) {
+  const el = document.getElementById(id);
+  el.classList.add("pulse");
+  setTimeout(() => el.classList.remove("pulse"), 400);
+}
+
+function attackBarbarian() {
+  const barbarianPower = Math.floor(Math.random() * 10) + 1;
+  const battleLog = document.getElementById('battleLog');
+
+  document.querySelector(".battle").classList.add("hit");
+  setTimeout(() => {
+    document.querySelector(".battle").classList.remove("hit");
+  }, 300);
+
+  if (soldiers >= barbarianPower) {
+    const loot = Math.floor(Math.random() * 50) + 10;
+    gold += loot;
+    soldiers -= barbarianPower;
+    battleLog.textContent = `Zafer! ${barbarianPower} barbarı yendin. ${loot} altın kazandın!`;
+  } else {
+    const loss = Math.min(soldiers, Math.floor(Math.random() * 3) + 1);
+    soldiers -= loss;
+    battleLog.textContent = `Kaybettin! ${loss} askerin öldü.`;
+  }
+
+  updateSoldiers();
+  updateResources();
 }
