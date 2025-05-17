@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Krallığını Kur</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <h1>👑 Krallığını Kur</h1>
+  <div class="resources">
+  <p><i class="fas fa-tree"></i> Odun: <span id="wood">0</span></p>
+  <p><i class="fas fa-mountain"></i> Taş: <span id="stone">0</span></p>
+  <p><i class="fas fa-coins"></i> Altın: <span id="gold">0</span></p>
+</div>
+
+<div class="save-load">
+  <h2>Oyun Yönetimi</h2>
+  <button onclick="saveGame()"><i class="fas fa-save"></i> Kaydet</button>
+  <button onclick="loadGame()"><i class="fas fa-download"></i> Yükle</button>
+  <button onclick="resetGame()"><i class="fas fa-trash"></i> Sıfırla</button>
+</div>
+
+
+  <div class="buildings">
+  <h2>Binalar</h2>
+  <p>Oduncu (Seviye <span id="woodLevel">0</span>)</p>
+  <button onclick="upgradeBuilding('wood')">Oduncuyu Yükselt (100 Odun)</button>
+
+  <p>Taş Ocağı (Seviye <span id="stoneLevel">0</span>)</p>
+  <button onclick="upgradeBuilding('stone')">Taş Ocağını Yükselt (100 Taş)</button>
+</div>
+
+
+  <script src="game.js"></script>
+</body>
+</html>
+
+<div class="army">
+  <h2>Ordu</h2>
+  <p>Asker Sayısı: <span id="soldiers">0</span></p>
+  <button onclick="trainSoldier()">Asker Eğit (30 Odun, 20 Altın)</button>
+</div>
+
+<div class="battle">
+  <h2>Barbar Avı</h2>
+  <button onclick="attackBarbarian()">Barbara Saldır</button>
+  <p id="battleLog"></p>
+</div>

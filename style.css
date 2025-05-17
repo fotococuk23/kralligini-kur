@@ -1,0 +1,69 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f7;
+  padding: 20px;
+  color: #333;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  color: #4a7bb7;
+}
+
+.resources, .buildings, .army, .battle {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+button {
+  background-color: #4a7bb7;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #3d689b;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.battle p {
+  font-style: italic;
+  margin-top: 10px;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.save-load {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.save-load button {
+  margin-right: 10px;
+}
